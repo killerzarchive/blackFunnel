@@ -83,6 +83,7 @@ export default function Navbar() {
             href="http://localhost:3000"
             target="_blank"
             rel="noopener noreferrer"
+            className="cta-btn"
             style={{
               background: '#fff', color: '#000',
               padding: '8px 20px', borderRadius: '100px',
@@ -148,6 +149,7 @@ export default function Navbar() {
           .mobile-menu-btn { display: flex !important; }
           .logo-mobile { display: inline; }
           .logo-desktop { display: none; }
+          .cta-btn { display: none !important; }
         }
       `}</style>
     </>

@@ -173,7 +173,7 @@ export default function Hero() {
               <p style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', marginBottom: '16px', letterSpacing: '-0.01em' }}>
                 Stay in the loop — no noise, just the build.
               </p>
-              <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', marginBottom: '12px', flexWrap: 'wrap' }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
                 <input
                   type="email"
                   value={email}
@@ -181,7 +181,7 @@ export default function Hero() {
                   placeholder="Your email address"
                   required
                   style={{
-                    flex: 1, minWidth: '180px',
+                    flex: 1, minWidth: 0,
                     background: 'rgba(255,255,255,0.06)',
                     border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: '100px', padding: '12px 20px',
