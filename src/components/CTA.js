@@ -60,7 +60,7 @@ export default function CTA() {
             fontSize: '16px', color: 'rgba(255,255,255,0.4)',
             lineHeight: 1.7, marginBottom: '48px',
           }}>
-            The Black Company is being built in public. Follow the journey — one creative turning ideas into companies, bootstrapped to $1 billion.
+            The Black Company is being built in public. Follow the journey — one creative turning ideas into companies, end goal: bootstrapping to $1 billion.
           </p>
 
           {!sent ? (
@@ -81,12 +81,13 @@ export default function CTA() {
                 placeholder="Your email address"
                 required
                 style={{
-                  flex: 1, background: 'none', border: 'none', outline: 'none',
+                  flex: 1, minWidth: 0, background: 'none', border: 'none', outline: 'none',
                   fontSize: '15px', color: '#fff', fontFamily: 'inherit',
                 }}
               />
               <button
                 type="submit"
+                className="cta-send-btn"
                 style={{
                   display: 'flex', alignItems: 'center', gap: '8px',
                   background: '#fff', color: '#000', border: 'none',
@@ -143,6 +144,11 @@ export default function CTA() {
           </div>
         </motion.div>
       </div>
+      <style>{`
+        @media (max-width: 480px) {
+          .cta-send-btn { padding: 12px 14px !important; font-size: 13px !important; gap: 4px !important; }
+        }
+      `}</style>
     </section>
   );
 }
