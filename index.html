@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Black Company — The Story</title>
+  <meta name="description" content="One person. Bootstrapping SaaS, apps, and companies to $1 billion. No VC. No co-founders. Just creative execution." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --dim: rgba(255,255,255,0.5);
+      --muted: rgba(255,255,255,0.25);
+      --subtle: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo-mark {
+      width: 26px; height: 26px;
+      background: #fff;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark-inner {
+      width: 11px; height: 11px;
+      background: #000;
+      border-radius: 3px;
+    }
+
+    .logo-text {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      color: #000;
+      padding: 7px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.82; }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 0 40px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--subtle);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      backdrop-filter: blur(10px);
+    }
+
+    .badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.5;
+    }
+
+    .hero-headline {
+      font-size: clamp(48px, 10vw, 96px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      color: #fff;
+      margin-bottom: 32px;
+    }
+
+    .hero-headline .dim {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .hero-sub {
+      font-size: clamp(17px, 2.5vw, 22px);
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 52px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn-primary:hover { transform: scale(0.97); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      transition: background 0.2s;
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+    .hero-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to top, #000 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── STORY SECTION ── */
+    #story {
+      padding-top: 120px;
+      padding-bottom: 120px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+
+    .section-title span {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .story-body p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    .story-body p strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+    }
+
+    .story-body p:last-child { margin-bottom: 0; }
+
+    /* ── PILLARS ── */
+    #pillars {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      background: rgba(255,255,255,0.015);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .pillar {
+      padding: 36px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      margin: 1px;
+      background: rgba(255,255,255,0.02);
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      cursor: default;
+    }
+
+    .pillar:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-3px);
+    }
+
+    .pillar-num {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .pillar-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .pillar-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.65;
+    }
+
+    /* ── TIMELINE ── */
+    #timeline {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    .timeline {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .timeline-item:first-child { border-top: 1px solid var(--border); }
+
+    .timeline-phase {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-top: 3px;
+    }
+
+    .timeline-heading {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .timeline-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.65;
+    }
+
+    .timeline-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 10px;
+    }
+
+    .status-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+    }
+
+    .status-dot.active { background: #fff; opacity: 0.8; }
+    .status-dot.done { background: rgba(255,255,255,0.3); }
+    .status-dot.upcoming { background: rgba(255,255,255,0.15); }
+
+    /* ── CTA SECTION ── */
+    #cta {
+      padding-top: 140px;
+      padding-bottom: 140px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+      -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-headline {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .cta-headline .faded {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .footer-link {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* ── HERO CTA BOX ── */
+    .hero-cta-box {
+      margin-top: 48px;
+      padding: 28px 32px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .hero-cta-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-cta-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .hero-cta-input {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 12px 20px;
+      font-size: 14px;
+      color: #fff;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .hero-cta-input::placeholder { color: rgba(255,255,255,0.25); }
+    .hero-cta-input:focus { border-color: rgba(255,255,255,0.25); }
+
+    .hero-cta-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 100px;
+      padding: 12px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hero-cta-btn:hover { opacity: 0.85; transform: scale(0.97); }
+
+    .hero-cta-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-cta-success {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 0 2px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .hero-cta-success-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      section { padding-left: 20px; padding-right: 20px; }
+      footer { padding: 28px 20px; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 70px 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    <span class="logo-text">BLACK COMPANY</span>
+  </a>
+  <a href="http://localhost:3000" class="nav-cta" target="_blank">
+    See the portfolio →
+  </a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Creative → Company
+    </div>
+
+    <h1 class="hero-headline">
+      The Black<br />
+      <span class="dim">Company</span>
+    </h1>
+
+    <p class="hero-sub">
+      One person. Turning creative work into apps, brands, businesses, and more — not a suit, not a VC. The goal: bootstrap to $1 billion.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#story" class="btn-primary">Read the story</a>
+      <a href="http://localhost:3000" class="btn-ghost" target="_blank">See what I'm building</a>
+    </div>
+
+    <div class="hero-cta-box">
+      <p class="hero-cta-label">Stay in the loop — no noise, just the build.</p>
+      <form class="hero-cta-form" onsubmit="handleHeroCTA(event)">
+        <input
+          type="email"
+          id="hero-email"
+          placeholder="Your email address"
+          required
+          class="hero-cta-input"
+        />
+        <button type="submit" class="hero-cta-btn">Join the movement</button>
+      </form>
+      <p class="hero-cta-sub">For creatives who build. No spam, ever.</p>
+    </div>
+  </div>
+
+  <div class="hero-fade"></div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="container">
+    <span class="section-label fade-up">A Movement</span>
+    <h2 class="section-title fade-up delay-1">
+      Not just a company.<br />
+      <span>A creative movement.</span>
+    </h2>
+
+    <div class="story-body">
+      <p class="fade-up delay-2">
+        The Black Company is a thought that became a direction — turning creative energy into apps, brands, and businesses. Not a business plan. <strong>A creative impulse taken all the way.</strong>
+      </p>
+      <p class="fade-up delay-3">
+        The goal is real: bootstrap a portfolio of companies to $1 billion — fully owned, no outside money, built from ideas alone. But the bigger point is what that proves. <strong>Creativity isn't a lane. It never was.</strong> It's the foundation every industry is secretly built on.
+      </p>
+      <p class="fade-up delay-3">
+        No VC. The co-founders are fellow creatives who believe in creativity and the authenticity of it — <strong>they're already in.</strong>
+      </p>
+      <p class="fade-up delay-4">
+        If this inspires another creative to stop waiting for permission and start building — that's just as important as the billion.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="container">
+    <span class="section-label fade-up">The Principles</span>
+    <h2 class="section-title fade-up delay-1">
+      How this works
+    </h2>
+
+    <div class="pillars-grid">
+      <div class="pillar fade-up delay-1">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Creative first, always</div>
+        <div class="pillar-desc">Every idea here starts as a creative impulse — not a market analysis. The work comes first. The business follows.</div>
+      </div>
+      <div class="pillar fade-up delay-2">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">No lane</div>
+        <div class="pillar-desc">Creativity isn't just for artists. It's for anyone with a healthy imagination and the drive to build. Good ideas don't belong to one category.</div>
+      </div>
+      <div class="pillar fade-up delay-3">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Ideas into real things</div>
+        <div class="pillar-desc">Apps. Brands. Businesses. The goal is to close the gap between imagination and execution — and prove it's possible without outside money or permission.</div>
+      </div>
+      <div class="pillar fade-up delay-4">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Bootstrap to $1B</div>
+        <div class="pillar-desc">The number is audacious on purpose. No VC. The co-founders are every creative who believes in creativity and the authenticity of it — they're already in.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <span class="section-label fade-up">The Roadmap</span>
+    <h2 class="section-title fade-up delay-1">
+      Where this is going
+    </h2>
+
+    <div class="timeline">
+      <div class="timeline-item fade-up">
+        <div class="timeline-phase">01</div>
+        <div>
+          <div class="timeline-heading">Build</div>
+          <div class="timeline-body">Every creative idea is a potential company. Apps, brands, products, services — whatever form the idea demands. It starts with imagination and ends with something people actually pay for.</div>
+          <div class="timeline-status">
+            <span class="status-dot active"></span>
+            In progress
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up delay-1">
+        <div class="timeline-phase">02</div>
+        <div>
+          <div class="timeline-heading">Grow the Portfolio</div>
+          <div class="timeline-body">Each thing that works becomes its own company under the Black Company umbrella. The goal is a portfolio of compounding businesses, not one big bet.</div>
+          <div class="timeline-status">
+            <span class="status-dot upcoming"></span>
+            Next
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up delay-2">
+        <div class="timeline-phase">03</div>
+        <div>
+          <div class="timeline-heading">Hit $1 Billion</div>
+          <div class="timeline-body">Bootstrap the entire portfolio to a combined $1B valuation without outside investment. No VC. The co-founders are fellow creatives who believe in what this is.</div>
+          <div class="timeline-status">
+            <span class="status-dot upcoming"></span>
+            The mission
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-grid-bg"></div>
+  <div class="cta-content">
+    <h2 class="cta-headline fade-up">
+      See what's<br />
+      <span class="faded">being built</span>
+    </h2>
+    <p class="cta-sub fade-up delay-1">
+      The main Black Company site shows all the products, companies, and software in the portfolio. Updated as things ship.
+    </p>
+    <div class="cta-actions fade-up delay-2">
+      <a href="http://localhost:3000" class="btn-primary" target="_blank">
+        Visit the portfolio →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 The Black Company. A personal project.</span>
+  <div style="display:flex;gap:24px;">
+    <a href="http://localhost:3000" class="footer-link" target="_blank">Portfolio site</a>
+    <a href="#story" class="footer-link">The story</a>
+  </div>
+</footer>
+
+<!-- PARTICLE CANVAS SCRIPT -->
+<script>
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.1 + 0.2,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      o: Math.random() * 0.35 + 0.08,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${p.o})`;
+      ctx.fill();
+    });
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 110) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(255,255,255,${0.035 * (1 - d / 110)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Hero CTA form
+  function handleHeroCTA(e) {
+    e.preventDefault();
+    const box = document.querySelector('.hero-cta-box');
+    box.innerHTML = `
+      <div class="hero-cta-success">
+        <span class="hero-cta-success-dot"></span>
+        You're in. Welcome to the movement.
+      </div>
+      <p class="hero-cta-sub" style="margin-top:10px;">We'll be in touch when something worth saying happens.</p>
+    `;
+  }
+
+  // Trigger hero elements immediately
+  setTimeout(() => {
+    document.querySelectorAll('#hero .fade-up, #hero .hero-headline, #hero .hero-sub, #hero .badge, #hero .hero-actions').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 100);
+</script>
+</body>
+</html>
